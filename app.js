@@ -60,7 +60,8 @@ server.use(require('./routes/upload'));
 
 server.use((req,res)=>{
     console.log('url >>',req.url);
-    res.sendFile(path.join(__dirname,'views',`${req.url}`))
+    console.log(path.join(__dirname,`views/${req.url}`));
+    res.sendFile(path.join(__dirname,`views/${req.url}`));
 })
 
 users.hasMany(expenses);
