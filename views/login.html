@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="login-title" >
+        <span style="color: white;font-family: Abril Fatface; font-size: 3em;">Welcome Back!!</span>
+        <span style='font-size:70px;'>&#128526;</span>
+    </div>
+    <form action="/user/login" method="POST" id="form">
+      <label for="email" class="form-label">Enter your email:</label><br>
+      <input type="email" name="email" id="emailLogin" required style="color: black;"><br>
+      <label for="password" class="form-label">Enter your Password:</label><br>
+      <input type="password" name="password" id="passwordLogin" required style="color: black;"><br>
+      <button type="submit" id="submit-btn">Login</button><br>
+    </form>
+    <div class="new-user">
+    <span>New User??</span>
+    <a href="http://localhost:800/">Sign Up</a>
+    <button onclick="forgotHandler()" id="forgot-password" style="width:45%;font-size:1em">Forget Password</button>
+    </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+
+<script>
+    const email=document.querySelector('#emailLogin');
+    const password=document.querySelector('#passwordLogin');
+    const form=document.querySelector('#form');
+
+    function isLoggedIn(){
+      const token=localStorage.getItem('token');
+      return token !== null && token !== undefined;
+}
+    
+
+    async function submitHandler(e){
+        try{
+
+        
+       e.preventDefault();
+       const obj={
+        email:email.value,
+        password:password.value
+       }
+       let response=await axios.post("http://localhost:800/user/login",obj);
+       console.log(response);
+      
+    //    try{
+    //     let token=response.data.data.token
+    //    }catch(err){
+    //     alert(`The password does not exist`);
+    //    }
+       localStorage.setItem('token',response.data.data.token);
+       let id=response.data.id;
+       if(response.data.data.responseEmail.email === email.value){
+        alert("User logged in sucessfully");
+        window.location.href="http://localhost:800/expense";
+        
+       
+       }/*else if(response.data ==="The email does not exist" || response.data ==="The pasword does not exist"){
+        alert(`${response.data}`)
+       }/*else{
+        document.write(`${response.data}`)
+       }*/
+       else {
+        alert(`The user does not exist`);
+        
+       }
+    }catch(err){
+        alert("The user does not exist");
+    }
+}
+
+    form.addEventListener('submit',submitHandler);
+
+    function forgotHandler(){
+        window.location="http://localhost:800/forgotpassword";
+    }
+</script>
+</html>
