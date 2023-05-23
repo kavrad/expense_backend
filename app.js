@@ -25,7 +25,7 @@ server.use(bodyParser.urlencoded({extended:false}));
 server.use(bodyParser.json())
 server.use(cors());
 
-server.use(express.static(path.join(__dirname,'public')));
+//server.use(express.static(path.join(__dirname,'public')));
 
 const accessLogStream=fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'})
 
@@ -57,6 +57,11 @@ const PasswordRoutes=require('./routes/forgotPassword');
 server.use('/password',PasswordRoutes);
 
 server.use(require('./routes/upload'));
+
+server.use((req,res)=>{
+    console.log('url >>',req.url);
+    res.sendFile(path.join(__dirname,'views',`${req.url}`))
+})
 
 users.hasMany(expenses);
 expenses.belongsTo(users);
