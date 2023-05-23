@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Arvo:wght@700&family=Beau+Rivage&family=Bree+Serif&family=Concert+One&family=Domine:wght@700&family=Exo+2:ital,wght@0,400;1,300;1,400&family=Josefin+Sans:ital@1&family=Lato:ital@1&family=Lobster&family=Rampart+One&family=Righteous&family=Roboto+Serif:wght@300&family=Yellowtail&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(103 232 249);;
+}
+.wrapper{
+    width: 40%;
+    height: 68%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#0f0c29,#302b63,#24243e);
+    margin-top: -5%;
+    border-radius: 0.5rem;
+}
+form{
+    width: 50%;
+    height: 52%;
+    border-radius: 0.5rem;
+    margin-top: 2%;
+   padding: 2%;
+   font-size: 1.5em;
+   font-weight: bold;
+   font-family:  Abril Fatface;
+   margin-left: 10%;
+}
+label,input,span,a{
+    color: white;
+}
+input{
+    margin: 5%;
+}
+#submit-btn{
+    margin-left: 20%;
+    padding: 3%;
+    width: 35%;
+    border-radius: 0.5rem;
+    font-family: Abril Fatface;
+    font-size: 0.8em;
+    background-color: rgb(103 232 249);
+}
+.new-user{
+    width: 70%;
+}
+#forgot-password{
+    width: 60%;
+    padding: 2%;
+    width: 35%;
+    border-radius: 0.5rem;
+    font-family: Abril Fatface;
+    font-size: 0.8em;
+    background-color: rgb(103 232 249);
+}
+@media (min-width: 768px) {
+    
+}
+@media (min-width:991px){
+    .wrapper{
+        width: 45%;
+    }
+    form{
+        width: 51%;
+    }
+    #submit-btn{
+        padding: 2%;
+        margin-left: 17%;
+    }
+}
