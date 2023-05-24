@@ -33,7 +33,7 @@ const form=document.querySelector('#form');
             desc:desc.value,
             category:category.value
         }
-        let response=await axios.post("http://3.213.71.94:800/add-expense/add-expense",obj,{headers:{"Authorization":token}});
+        let response=await axios.post("http://65.1.165.115:800/add-expense/add-expense",obj,{headers:{"Authorization":token}});
         console.log(response);
         let data=response.data[response.data.length-1];
         return response;
