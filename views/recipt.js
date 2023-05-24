@@ -13,7 +13,7 @@ const form = document.querySelector('#expense-form');
 form.addEventListener('submit', event => {
   event.preventDefault();
   const formData = new FormData(form);
-  axios.post('http://13.235.254.164:800/upload', formData, {
+  axios.post('http://65.1.165.115:800/upload', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

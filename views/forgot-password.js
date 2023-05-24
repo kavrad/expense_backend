@@ -7,11 +7,11 @@ form.addEventListener('submit',async function(e){
         const obj={
             email:email.value
         }
-        const result=await axios.post("http://13.235.254.164:800/password/forgot-password",obj,{headers:{"Authorization":token}});
+        const result=await axios.post("http://65.1.165.115:800/password/forgot-password",obj,{headers:{"Authorization":token}});
         console.log(result);
         alert(`${result.data.message}`);
         async function showLink(){
-          axios.get("http://13.235.254.164:800/password/resetpassword/${id}").then((data)=>{
+          axios.get("http://65.1.165.115:800/password/resetpassword/${id}").then((data)=>{
             console.log(data);
           })
         }

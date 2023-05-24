@@ -15,7 +15,7 @@ const form=document.querySelector('#form');
     async function getExpenses(){
         let token=localStorage.getItem('token');
         console.log(token);
-      let response=await axios("http://13.235.254.164:800/show-expense",
+      let response=await axios("http://65.1.165.115:800/show-expense",
       {
          headers: {
     'Authorization': token,
@@ -64,7 +64,7 @@ const form=document.querySelector('#form');
      
     async function leaderHandler(){
         const token=localStorage.getItem('token');
-        let response=await axios("http://13.235.254.164:800/purchase/leaderboard",{headers:{"Authorization":token}})
+        let response=await axios("http://65.1.165.115:800/purchase/leaderboard",{headers:{"Authorization":token}})
        console.log(response);
        let board=document.getElementById('board');
        board.style.cssText="text-align:center;margin:2%;font-family:Abril fatFace"
@@ -136,7 +136,7 @@ const form=document.querySelector('#form');
             leaderboard.classList.remove('leaderboard');
             document.getElementsByClassName('wrapper')[0].style.cssText="justify-content:center;"
         }
-       /*let ans=await axios.get("http://13.235.254.164:800/get-premium",{headers:{"Authorization":token}})
+       /*let ans=await axios.get("http://65.1.165.115:800/get-premium",{headers:{"Authorization":token}})
       decoded.isPremium=ans.data.isPremium;*/
       
        console.log(decoded);
@@ -145,14 +145,14 @@ const form=document.querySelector('#form');
          
     async function rzpHandler(e){
         var token=localStorage.getItem('token');
-        const response=await axios("http://13.235.254.164:800/purchase/premiumMembership",{headers:{"Authorization":token}})
+        const response=await axios("http://65.1.165.115:800/purchase/premiumMembership",{headers:{"Authorization":token}})
         console.log(response);
         let options={
             order_id:response.data.data.id,
             keyId:response.data.key_id,
             handler:async function(response){
                 console.log(response);
-              let ans=await axios.post("http://13.235.254.164:800/updatemembership",{
+              let ans=await axios.post("http://65.1.165.115:800/updatemembership",{
                 orderId:options.order_id,
                 paymentId:response.razorpay_payment_id
               },{
@@ -179,7 +179,7 @@ const form=document.querySelector('#form');
             rzp1.open();
             rzp1.on('payment.failed',async function(response){
                 alert('Something went wrong')
-                let ans=await axios.post("http://13.235.254.164:800/updatemembershipFailed",{
+                let ans=await axios.post("http://65.1.165.115:800/updatemembershipFailed",{
                 status:"Failed",
                 orderId:options.order_id,
                 paymentId:response.razorpay_payment_id
@@ -327,7 +327,7 @@ noOfRows.addEventListener('change',async function(e){
 document.getElementById('expense-list').addEventListener('click',async function(e){
     console.log(e.target.id);
     let token=localStorage.getItem('token');
-    let response=await axios.delete(`http://13.235.254.164:800/delete-expense/${e.target.id}`,{headers:{"Authorization":token}});
+    let response=await axios.delete(`http://65.1.165.115:800/delete-expense/${e.target.id}`,{headers:{"Authorization":token}});
     console.log(response);
     let id=document.getElementById(`${response.data.expense.Id}`)
     console.log(id);
@@ -343,5 +343,5 @@ document.getElementById('expense-list').addEventListener('click',async function(
   
     const itemsShow=document.querySelector('#itemsperpage');
     function viewFile(){
-        window.location.href="http://13.235.254.164:800/file/read";
+        window.location.href="http://65.1.165.115:800/file/read";
     }
